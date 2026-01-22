@@ -6,7 +6,7 @@
 	.section	.rodata
 	.align	3
 .LC0:
-	.string	"Welcome RISC-V!\r\n"
+	.string	"Welcome to RISC-V!\r\n"
 	.text
 	.align	2
 	.globl	kernel_main

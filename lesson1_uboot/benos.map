@@ -23,9 +23,9 @@ Linker script and memory map
                 0x0000000080200188                kernel_main
  .text          0x00000000802001a4        0x0 build_src/boot_s.o
 
-.rodata         0x00000000802001a8       0x12
+.rodata         0x00000000802001a8       0x15
  *(.rodata)
- .rodata        0x00000000802001a8       0x12 build_src/kernel_c.o
+ .rodata        0x00000000802001a8       0x15 build_src/kernel_c.o
 
 .data           0x0000000080201000     0x1000
  *(.data)
