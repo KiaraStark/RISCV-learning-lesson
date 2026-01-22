@@ -1,0 +1,67 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	//
+$(BUILD_DIR)/%_c.o	Makefile	/^$(BUILD_DIR)\/%_c.o: $(SRC_DIR)\/%.c$/;"	t	language:Make
+$(BUILD_DIR)/%_s.o	Makefile	/^$(BUILD_DIR)\/%_s.o: $(SRC_DIR)\/%.S$/;"	t	language:Make
+$(SBI_BUILD_DIR)/%_c.o	Makefile	/^$(SBI_BUILD_DIR)\/%_c.o: $(SBI_SRC_DIR)\/%.c$/;"	t	language:Make
+$(SBI_BUILD_DIR)/%_s.o	Makefile	/^$(SBI_BUILD_DIR)\/%_s.o: $(SBI_SRC_DIR)\/%.S$/;"	t	language:Make
+.payload	lesson1_uboot/sbi/sbi_payload.ld	/^    .payload : {$/;"	S	language:LdScript
+ASM_FILES	Makefile	/^ASM_FILES = $(wildcard $(SRC_DIR)\/*.S)$/;"	m	language:Make
+BUILD_DIR	Makefile	/^BUILD_DIR = build_src$/;"	m	language:Make
+CMD_PREFIX	Makefile	/^	CMD_PREFIX := $(CMD_PREFIX_DEFAULT)$/;"	m	language:Make
+CMD_PREFIX	Makefile	/^	CMD_PREFIX :=$/;"	m	language:Make
+CMD_PREFIX_DEFAULT	Makefile	/^CMD_PREFIX_DEFAULT := @$/;"	m	language:Make
+C_FILES	Makefile	/^C_FILES = $(wildcard $(SRC_DIR)\/*.c)$/;"	m	language:Make
+DEP_FILES	Makefile	/^DEP_FILES = $(OBJ_FILES:%.o=%.d)$/;"	m	language:Make
+FW_JUMP_ADDR	lesson1_uboot/sbi/sbi_main.c	/^#define FW_JUMP_ADDR /;"	d	language:C	file:
+GNU	Makefile	/^GNU ?= riscv64-linux-gnu$/;"	m	language:Make
+OBJ_FILES	Makefile	/^OBJ_FILES = $(C_FILES:$(SRC_DIR)\/%.c=$(BUILD_DIR)\/%_c.o)$/;"	m	language:Make
+QEMU_BIOS	Makefile	/^QEMU_BIOS = -bios mysbi.bin  -device loader,file=benos.bin,addr=0x80200000 $/;"	m	language:Make
+SBI_ASM_FILES	Makefile	/^SBI_ASM_FILES = $(wildcard $(SBI_SRC_DIR)\/*.S)$/;"	m	language:Make
+SBI_BUILD_DIR	Makefile	/^SBI_BUILD_DIR = build_sbi$/;"	m	language:Make
+SBI_C_FILES	Makefile	/^SBI_C_FILES = $(wildcard $(SBI_SRC_DIR)\/*.c)$/;"	m	language:Make
+SBI_OBJ_FILES	Makefile	/^SBI_OBJ_FILES = $(SBI_C_FILES:$(SBI_SRC_DIR)\/%.c=$(SBI_BUILD_DIR)\/%_c.o)$/;"	m	language:Make
+SBI_SRC_DIR	Makefile	/^SBI_SRC_DIR = sbi$/;"	m	language:Make
+SRC_DIR	Makefile	/^SRC_DIR = src$/;"	m	language:Make
+UART_DEFAULT_BAND	lesson1_uboot/src/uart.c	/^#define UART_DEFAULT_BAND /;"	d	language:C	file:
+UART_H	lesson1_uboot/include/uart.h	/^#define UART_H$/;"	d	language:C++
+_payload_end	lesson1_uboot/sbi/sbi_payload.ld	/^        PROVIDE(_payload_end = .);$/;"	s	language:LdScript	section:.payload	assignment:provide
+_payload_start	lesson1_uboot/sbi/sbi_payload.ld	/^        PROVIDE(_payload_start = .);$/;"	s	language:LdScript	section:.payload	assignment:provide
+_start	lesson1_uboot/sbi/sbi_boot.s	/^_start:$/;"	l	language:Asm
+_start	lesson1_uboot/src/boot.S	/^_start:$/;"	l	language:Asm
+all	Makefile	/^all : clean benos.bin mysbi.bin benos_payload.bin$/;"	t	language:Make
+benos.bin	Makefile	/^benos.bin: $(SRC_DIR)\/linker.ld $(OBJ_FILES)$/;"	t	language:Make
+benos_payload.bin	Makefile	/^benos_payload.bin: $(SBI_SRC_DIR)\/sbi_linker_payload.ld $(SBI_OBJ_FILES) $(OBJ_FILES)$/;"	t	language:Make
+board	Makefile	/^board ?= qemu$/;"	m	language:Make
+bss_begin	lesson1_uboot/sbi/sbi_base.ld	/^bss_begin = .;$/;"	s	language:LdScript
+bss_begin	lesson1_uboot/src/linker.ld	/^    bss_begin = .;$/;"	s	language:LdScript
+bss_end	lesson1_uboot/sbi/sbi_base.ld	/^bss_end = .;/;"	s	language:LdScript
+bss_end	lesson1_uboot/src/linker.ld	/^    bss_end = .;$/;"	s	language:LdScript
+clean	Makefile	/^clean :$/;"	t	language:Make
+debug	Makefile	/^debug:$/;"	t	language:Make
+hang	lesson1_uboot/src/boot.S	/^hang:$/;"	l	language:Asm
+kernel_main	lesson1_uboot/src/kernel.c	/^void kernel_main(void){$/;"	f	language:C	typeref:typename:void	signature:(void)
+mysbi.bin	Makefile	/^mysbi.bin: $(SBI_SRC_DIR)\/sbi_linker.ld $(SBI_OBJ_FILES) $/;"	t	language:Make
+payload	Makefile	/^payload:$/;"	t	language:Make
+payload_bin	lesson1_uboot/sbi/sbi_payload.S	/^payload_bin:$/;"	l	language:Asm
+run	Makefile	/^run:$/;"	t	language:Make
+sbi_main	lesson1_uboot/sbi/sbi_main.c	/^void sbi_main(void){$/;"	f	language:C	typeref:typename:void	signature:(void)
+stacks_start	lesson1_uboot/sbi/sbi_boot.s	/^stacks_start: $/;"	l	language:Asm
+stacks_start	lesson1_uboot/src/boot.S	/^stacks_start:$/;"	l	language:Asm
+uart16550_clock	lesson1_uboot/src/uart.c	/^static unsigned int uart16550_clock = 1843200;\/\/UART 芯片的输入时钟频率$/;"	v	language:C	typeref:typename:unsigned int	file:
+uart_init	lesson1_uboot/src/uart.c	/^void uart_init(void){$/;"	f	language:C	typeref:typename:void	signature:(void)
+uart_send	lesson1_uboot/src/uart.c	/^void uart_send(char c){$/;"	f	language:C	typeref:typename:void	signature:(char c)
+uart_send_string	lesson1_uboot/src/uart.c	/^void uart_send_string(char *str){$/;"	f	language:C	typeref:typename:void	signature:(char * str)
+✅ 一、这段代码是“驱动开发”吗？	README.md	/^## ✅ 一、这段代码是“驱动开发”吗？$/;"	s	language:Markdown
+✅ 三、“设置 0xc7 这些数”为什么像嵌入式开发？	README.md	/^## ✅ 三、“设置 0xc7 这些数”为什么像嵌入式开发？$/;"	s	language:Markdown
+✅ 二、为什么计算机专业学生没学过“波特率”？	README.md	/^## ✅ 二、为什么计算机专业学生没学过“波特率”？$/;"	s	language:Markdown
+✅ 五、为什么你现在会接触到这些？	README.md	/^## ✅ 五、为什么你现在会接触到这些？$/;"	s	language:Markdown
+✅ 六、你应该怎么看待这些知识？	README.md	/^## ✅ 六、你应该怎么看待这些知识？$/;"	s	language:Markdown
+✅ 四、驱动开发 vs 嵌入式开发：区别与联系	README.md	/^## ✅ 四、驱动开发 vs 嵌入式开发：区别与联系$/;"	s	language:Markdown
+嵌入式开发的核心特点：	README.md	/^### 嵌入式开发的核心特点：$/;"	S	language:Markdown
+💎 总结	README.md	/^## 💎 总结$/;"	s	language:Markdown
+📌 原因：	README.md	/^### 📌 原因：$/;"	S	language:Markdown
