@@ -3,13 +3,13 @@
 . = 0x80000000;
 
 /* 依次安排启动代码.text.boot、普通代码段、只读数据段、已初始化数据段，并在对齐后分配 BSS 段（未初始化的全局/静态变量段） */
-.text.boot : { *{.text.boot} }
+.text.boot : { *(.text.boot) }
 
-.text : { *{.text} }
+.text : { *(.text) }
 
-.rodata : { *{.rodata} }
+.rodata : { *(.rodata) }
 
-.data : { *{.data} }
+.data : { *(.data) }
 
 /* 设置对齐方式为8字节对齐 */
 . = ALIGN(0x8);
@@ -17,5 +17,5 @@
 /* 定义一个符号 bss_begin，其值等于当前位置 */
 bss_begin = .;
 /* 合并所有未初始化的全局/静态变量到 .bss 段。 */
-.bss : { *{.bss} }
+.bss : { *(.bss) }
 bss_end = .;

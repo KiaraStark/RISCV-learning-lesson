@@ -6,7 +6,7 @@ void sbi_main(void){
     unsigned long val;
     val = read_csr(mstatus);//读取mstatus
     val = INSERT_FIELD(val,MSTATUS_MPP,PRV_S);//修改val的MSTATUS_MPP位置的值为PRV_S（Supervisor）
-    val = INSERT_FIELD(VAL,MSTATUS_MPIE, 0);
+    val = INSERT_FIELD(val,MSTATUS_MPIE, 0);
     write_csr(mstatus, val);//写回mstatus
 
     write_csr(mepc,FW_JUMP_ADDR);//设置 mepc = 0x80200000 (OS 入口)

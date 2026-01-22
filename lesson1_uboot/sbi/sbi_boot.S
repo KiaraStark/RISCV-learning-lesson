@@ -8,7 +8,7 @@
 /* 定义程序入口标签 _start。这是 CPU 上电或 bootloader 跳转后执行的第一条指令。 */
 _start:
     /* 关闭所有机器级中断，防止在初始化完成前被中断打断 */
-    csrw mie zero
+
 
     /* 初始化一个4KB的栈 */
     la sp, stacks_start

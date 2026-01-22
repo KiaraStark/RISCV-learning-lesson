@@ -2,16 +2,11 @@
 
 .global _start
 _start:
-    csrw sie,zero
+    csrw sie, zero
     la sp, stacks_start
     li t0,4096
     add sp, sp, t0
-    call kernel_main
-
-hang:
-    /* Wait For Interrupt */
-    wfi
-    j hang
+    tail kernel_main
 
 .section .data
 /* 按 2^12 = 4096 字节（4KB）对齐 */

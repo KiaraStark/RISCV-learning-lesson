@@ -1,0 +1,98 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+                0x0000000080200000                . = 0x80200000
+
+.text.boot      0x0000000080200000       0x18
+ *(.text.boot)
+ .text.boot     0x0000000080200000       0x18 build_src/boot_s.o
+                0x0000000080200000                _start
+
+.text           0x0000000080200018      0x18c
+ *(.text)
+ .text          0x0000000080200018      0x170 build_src/uart_c.o
+                0x0000000080200018                uart_send
+                0x000000008020006c                uart_send_string
+                0x00000000802000cc                uart_init
+ .text          0x0000000080200188       0x1c build_src/kernel_c.o
+                0x0000000080200188                kernel_main
+ .text          0x00000000802001a4        0x0 build_src/boot_s.o
+
+.rodata         0x00000000802001a8       0x12
+ *(.rodata)
+ .rodata        0x00000000802001a8       0x12 build_src/kernel_c.o
+
+.data           0x0000000080201000     0x1000
+ *(.data)
+ .data          0x0000000080201000        0x0 build_src/uart_c.o
+ .data          0x0000000080201000        0x0 build_src/kernel_c.o
+ .data          0x0000000080201000     0x1000 build_src/boot_s.o
+                0x0000000080201000                stacks_start
+
+.sdata          0x0000000080202000        0x4
+ .sdata         0x0000000080202000        0x4 build_src/uart_c.o
+                0x0000000080202008                . = ALIGN (0x8)
+                0x0000000080202008                bss_begin = .
+
+.bss            0x0000000080202008        0x0
+ *(.bss)
+ .bss           0x0000000080202008        0x0 build_src/uart_c.o
+ .bss           0x0000000080202008        0x0 build_src/kernel_c.o
+ .bss           0x0000000080202008        0x0 build_src/boot_s.o
+                0x0000000080202008                bss_end = .
+LOAD build_src/uart_c.o
+LOAD build_src/kernel_c.o
+LOAD build_src/boot_s.o
+OUTPUT(build_src/benos.elf elf64-littleriscv)
+
+.debug_info     0x0000000000000000      0x28d
+ .debug_info    0x0000000000000000      0x217 build_src/uart_c.o
+ .debug_info    0x0000000000000217       0x48 build_src/kernel_c.o
+ .debug_info    0x000000000000025f       0x2e build_src/boot_s.o
+
+.debug_abbrev   0x0000000000000000      0x10e
+ .debug_abbrev  0x0000000000000000       0xcc build_src/uart_c.o
+ .debug_abbrev  0x00000000000000cc       0x2e build_src/kernel_c.o
+ .debug_abbrev  0x00000000000000fa       0x14 build_src/boot_s.o
+
+.debug_aranges  0x0000000000000000       0x90
+ .debug_aranges
+                0x0000000000000000       0x30 build_src/uart_c.o
+ .debug_aranges
+                0x0000000000000030       0x30 build_src/kernel_c.o
+ .debug_aranges
+                0x0000000000000060       0x30 build_src/boot_s.o
+
+.debug_line     0x0000000000000000      0x2af
+ .debug_line    0x0000000000000000      0x1ff build_src/uart_c.o
+ .debug_line    0x00000000000001ff       0x5b build_src/kernel_c.o
+ .debug_line    0x000000000000025a       0x55 build_src/boot_s.o
+
+.debug_str      0x0000000000000000      0x110
+ .debug_str     0x0000000000000000       0xe0 build_src/uart_c.o
+                                         0xe5 (size before relaxing)
+ .debug_str     0x00000000000000e0       0x19 build_src/kernel_c.o
+                                         0x96 (size before relaxing)
+ .debug_str     0x00000000000000f9       0x17 build_src/boot_s.o
+                                         0x35 (size before relaxing)
+
+.comment        0x0000000000000000       0x24
+ .comment       0x0000000000000000       0x24 build_src/uart_c.o
+                                         0x25 (size before relaxing)
+ .comment       0x0000000000000024       0x25 build_src/kernel_c.o
+
+.note.GNU-stack
+                0x0000000000000000        0x0
+ .note.GNU-stack
+                0x0000000000000000        0x0 build_src/uart_c.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build_src/kernel_c.o
+
+.debug_frame    0x0000000000000000       0xa8
+ .debug_frame   0x0000000000000000       0x78 build_src/uart_c.o
+ .debug_frame   0x0000000000000078       0x30 build_src/kernel_c.o

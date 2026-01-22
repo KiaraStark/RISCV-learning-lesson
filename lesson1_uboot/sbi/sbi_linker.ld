@@ -1,7 +1,7 @@
 /* 说明链接脚本对应的处理器为RISCV */
 OUTPUT_ARCH(riscv)
 /* 指定程序的入口地址为_start */
-ENTER(_start)
+ENTRY(_start)
 SECTIONS
 {
     INCLUDE "sbi/sbi_base.ld"
