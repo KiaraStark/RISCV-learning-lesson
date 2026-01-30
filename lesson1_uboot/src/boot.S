@@ -17,3 +17,9 @@ stacks_start:
 
 /*提问：那段汇编指令已经在stacks_start和sp之间开辟了一个栈的空间了，为什么还要声明让stacks_start跳过4096字节？ */
 /*解答：汇编指令只是把栈指针 sp 移动了，.skip 才是分配了内存，为栈预留空间*/
+
+.option push
+.option norelax
+/* 初始化全局指针 gp */
+ la gp, __global_pointer$
+.option pop
